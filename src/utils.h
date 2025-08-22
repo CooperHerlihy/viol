@@ -45,21 +45,29 @@ typedef int64_t i64;
 typedef float f32;
 typedef double f64;
 
-#define ERROR(message) { fprintf(stderr, "Error: " message "\n"); exit(EXIT_FAILURE); }
-#define ERRORF(message, ...) { fprintf(stderr, "Error: " message "\n", __VA_ARGS__); exit(EXIT_FAILURE); }
+#define DEBUG(message) { fprintf(stderr, "Debug: " message "\n"); }
+#define DEBUGF(message, ...) { fprintf(stderr, "Debug: " message "\n", __VA_ARGS__); }
+
+#define ERROR(message) { fprintf(stderr, "Error: " message "\n"); abort(); }
+#define ERRORF(message, ...) { fprintf(stderr, "Error: " message "\n", __VA_ARGS__); abort(); }
 
 #if defined(NDEBUG)
 #define ASSERT(condition) ((void)0)
 #else
-#define ASSERT(condition) if (!(condition)) { ERRORF(__FILE__ ":%d" " ASSERT failed: " #condition, __LINE__); }
+#define ASSERT(condition) \
+    if (!(condition)) { \
+        ERRORF("%s " __FILE__ ":%d" " ASSERT failed: " #condition, __func__, __LINE__); \
+    }
 #endif
 
 #define LOG(message) { fprintf(stdout, "Log: " message "\n"); }
 #define LOGF(message, ...) { fprintf(stdout, "Log: " message "\n", __VA_ARGS__); }
 
 byte *align(byte *ptr, usize alignment);
-byte *halloc(usize size);
-byte *stalloc(usize size);
+void *halloc(usize size);
+void *rehalloc(byte *ptr, usize old_size, usize new_size);
+void *stalloc(usize size);
+void *restalloc(byte *ptr, usize old_size, usize new_size);
 void destalloc(byte *ptr, usize size);
 void init_heap(usize heap_size, usize stack_size);
 
