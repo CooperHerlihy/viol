@@ -1,1 +1,60 @@
-(- (* (/ 10 4) (+ 2 3)) 4)
+
+# hello there
+
+push 10
+push 2
+call div
+
+push 3
+call add
+
+call print
+
+push 2
+push 0
+call div
+
+call print
+
+# potential future syntax
+#
+# call :: fn (f: fn(i32) -> i32, a: i32) -> i32 {
+#     return f(a)
+# }
+#
+# div :: fn (a: i32, b: i32) -> i32 {
+#     if b == 0 {
+#         abort()
+#     }
+#     return a / b
+# }
+#
+# add_one :: (x: *i32) {
+#     *x += 1
+# }
+#
+# add :: fn (a: i32, b: i32) -> i32 {
+#     return a + b
+# }
+#
+# double :: fn (a: i32) -> i32 {
+#     return a * 2
+# }
+#
+# main :: () {
+#     x :: add(1, 2)
+#     y :: 0
+#     print(div(x, y))
+#
+#     num :: eval {
+#         a = 2
+#         while a < 10 {
+#             a += 1
+#         }
+#         b := call(double, a)
+#         add_one(&b)
+#         return b
+#     }
+#     print(num)
+# }
+
