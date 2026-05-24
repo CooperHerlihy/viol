@@ -97,10 +97,10 @@ getSysconfDir :: IO FilePath
 
 bindir, libdir, dynlibdir, datadir, libexecdir, sysconfdir :: FilePath
 bindir     = "/home/herlihy/.cabal/bin"
-libdir     = "/home/herlihy/.cabal/lib/x86_64-linux-ghc-9.10.3-7361/viol-0.1.0.0-inplace-viol"
-dynlibdir  = "/home/herlihy/.cabal/lib/x86_64-linux-ghc-9.10.3-7361"
-datadir    = "/home/herlihy/.cabal/share/x86_64-linux-ghc-9.10.3-7361/viol-0.1.0.0"
-libexecdir = "/home/herlihy/.cabal/libexec/x86_64-linux-ghc-9.10.3-7361/viol-0.1.0.0"
+libdir     = "/home/herlihy/.cabal/lib/x86_64-linux-ghc-9.10.3-c0c3/viol-0.1.0.0-inplace-viol"
+dynlibdir  = "/home/herlihy/.cabal/lib/x86_64-linux-ghc-9.10.3-c0c3"
+datadir    = "/home/herlihy/.cabal/share/x86_64-linux-ghc-9.10.3-c0c3/viol-0.1.0.0"
+libexecdir = "/home/herlihy/.cabal/libexec/x86_64-linux-ghc-9.10.3-c0c3/viol-0.1.0.0"
 sysconfdir = "/home/herlihy/.cabal/etc"
 
 getBinDir     = catchIO (getEnv "viol_bindir")     (\_ -> return bindir)
